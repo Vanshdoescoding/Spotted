@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Spotted",
+    "slug": "spotted",
+    "scheme": "spotted",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Spotted uses your camera to capture wildlife evidence for sightings you choose to record."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Spotted uses selected photos only when you choose an existing image for a sighting.",
+          "cameraPermission": "Spotted uses your camera to capture wildlife evidence for sightings you choose to record."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Spotted uses your location to place sightings approximately and protect sensitive wildlife locations."
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.spotted.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Spotted uses your camera to capture wildlife evidence for sightings you choose to record.",
+        "NSPhotoLibraryUsageDescription": "Spotted uses selected photos only when you choose an existing image for a sighting.",
+        "NSLocationWhenInUseUsageDescription": "Spotted uses your location to place sightings approximately and protect sensitive wildlife locations."
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": ""
+      }
+    }
+  }
+}
