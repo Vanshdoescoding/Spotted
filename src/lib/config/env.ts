@@ -19,7 +19,7 @@ export const env = {
   isSupabaseConfigured: Boolean(
     rawEnv.EXPO_PUBLIC_SUPABASE_URL && rawEnv.EXPO_PUBLIC_SUPABASE_ANON_KEY,
   ),
-  isDevelopment: process.env.NODE_ENV !== "production",
+  isDevelopment: typeof __DEV__ !== "undefined" ? __DEV__ : false,
 } as const;
 
 export function hasSupabaseConfig(): boolean {
@@ -32,8 +32,8 @@ function emptyToUndefined(value: string | undefined): string | undefined {
 
 function parseMockFlag(value: string | undefined): boolean {
   if (!value) {
-    return true;
+    return false;
   }
 
-  return value.toLowerCase() !== "false";
+  return value.toLowerCase() === "true";
 }

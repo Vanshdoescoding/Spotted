@@ -21,7 +21,7 @@ export default function SignUpScreen() {
     const result = await auth.signUpWithEmail(email, password);
     setMessage(result.message ?? (result.ok ? "Account request submitted." : "Sign up could not be completed."));
     if (result.ok) {
-      router.back();
+      router.replace(`/sign-up-pending?email=${encodeURIComponent(email)}`);
     }
   }
 

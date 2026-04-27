@@ -21,7 +21,7 @@ export default function SignInScreen() {
     const result = await auth.signInWithEmail(email, password);
     setMessage(result.message ?? (result.ok ? "Signed in." : "Sign in could not be completed."));
     if (result.ok) {
-      router.back();
+      router.replace("/(tabs)/home");
     }
   }
 

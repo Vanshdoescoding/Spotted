@@ -37,7 +37,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
       }
     });
 
-    if (env.useMockData || !supabaseMaybe) {
+    if ((env.useMockData && env.isDevelopment) || !supabaseMaybe) {
       return () => {
         isMounted = false;
       };
@@ -58,14 +58,14 @@ export function AuthProvider({ children }: PropsWithChildren) {
       ...state,
       signInWithEmail: async (email, password) => {
         const result = await signInWithEmailService(email, password);
-        if (env.useMockData && result.ok) {
+        if (env.useMockData && env.isDevelopment && result.ok) {
           setState(getSafeUnauthenticatedState());
         }
         return result;
       },
       signUpWithEmail: async (email, password) => {
         const result = await signUpWithEmailService(email, password);
-        if (env.useMockData && result.ok) {
+        if (env.useMockData && env.isDevelopment && result.ok) {
           setState(getSafeUnauthenticatedState());
         }
         return result;
